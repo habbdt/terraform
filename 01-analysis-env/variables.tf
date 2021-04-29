@@ -33,3 +33,9 @@ variable "image_family" {
     type        = string
     default     = null
 }
+
+variable "startup_script" {
+    description = "start up script to install docker, gcsfuse"
+    type        = string
+    default     = null
+}

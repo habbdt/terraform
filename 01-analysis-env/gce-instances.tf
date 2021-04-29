@@ -35,7 +35,7 @@ resource "google_compute_instance" "gce-instance" {
     foo = "bar"
   }
 
-  metadata_startup_script = "echo hello > /tmp/test.txt"
+  metadata_startup_script = (var.startup_script == null) ? null : (fileexists(var.startup_script) ? file(var.startup_script) : var.startup_script)
 
 #   service_account {
 #     email  = google_service_account.default-compute-engine-sa.account_id

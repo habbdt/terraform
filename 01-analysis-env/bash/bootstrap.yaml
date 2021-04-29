@@ -1,9 +1,3 @@
-#!/bin/bash
-
-# install docker, gcsfuse, mount gcsbuckets
-
-sudo yum install -y epel-release ansible
-sudo tee bootstrap.yaml > /dev/null <<EOF
 ---
 - hosts: localhost
   connection: local
@@ -49,5 +43,3 @@ sudo tee bootstrap.yaml > /dev/null <<EOF
         fstype: gcsfuse
         opts: rw,x-systemd.requires=network-online.target,user
         state: mounted
-EOF
-sudo ansible-playbook bootstrap.yaml
